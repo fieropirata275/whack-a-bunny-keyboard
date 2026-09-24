@@ -1,0 +1,3 @@
+rich>=13
+keyboard>=0.13
+openrgb-python>=0.3
