@@ -1,9 +1,8 @@
-# <img src="https://api.iconify.design/lucide:gamepad-2.svg?color=%238b949e" width="30" height="30" align="center" alt="Gamepad"> Keyboard Game — Setup & Controls
+# <img src="https://api.iconify.design/lucide:gamepad-2.svg?color=%238b949e" width="30" height="30" align="center" alt="Gamepad"> Whack-a-Bunny Keyboard
 
-> [!IMPORTANT]
-> This game was designed primarily with the **Logitech G PRO line on Windows** in mind.
->
-> On **Linux**, you can use essentially any compatible RGB keyboard, as the game uses **OpenRGB** as its backend.
+A keyboard-driven game where your **RGB keyboard becomes part of the game interface**.
+
+The game was primarily designed around the **Logitech G PRO line on Windows**, while Linux uses **OpenRGB**, allowing many other compatible RGB keyboards to be used.
 
 ---
 
@@ -14,179 +13,317 @@
 >
 > If you do not follow these steps, **keyboard integration will not work correctly.**
 
-### <img src="https://api.iconify.design/lucide:file-cog.svg?color=%238b949e" width="22" height="22" align="center" alt="DLL"> Required Logitech LED Wrapper
+### <img src="./assets/LOGITECHGHUBLOGO.svg" width="24" height="24" align="center" alt="Logitech G HUB"> Logitech G HUB is required
 
-Inside this project you will find the following file:
+On Windows, this game communicates with your Logitech keyboard through **Logitech G HUB**.
+
+G HUB must therefore be:
+
+- Installed
+- Running
+- Able to detect your keyboard
+
+> [!WARNING]
+> **Keep Logitech G HUB open in the background while playing.**
+>
+> Closing G HUB may prevent the game from communicating with your keyboard.
+
+---
+
+## <img src="https://api.iconify.design/lucide:file-cog.svg?color=%238b949e" width="23" height="23" align="center" alt="DLL"> Required Windows DLL
+
+This repository contains:
 
 ```text
 LogitechLedEnginesWrapper.dll
 ```
 
-This file **MUST be located directly in the root directory of the project**.
+This file is required for communication between the game and Logitech G HUB.
+
+It **MUST remain in the root directory of the project**.
 
 ### Correct
 
 ```text
-YourGame/
-├── LogitechLedEnginesWrapper.dll
-├── game.exe
-├── README.md
+whack-a-bunny-keyboard/
 ├── assets/
-│   └── logitech-g.svg
+│   ├── LOGITECHGHUBLOGO.svg
+│   └── OPENRGBLOGO.svg
+├── LogitechLedEnginesWrapper.dll
+├── README.md
 └── ...
 ```
 
 ### Incorrect
 
 ```text
-YourGame/
+whack-a-bunny-keyboard/
 ├── dll/
 │   └── LogitechLedEnginesWrapper.dll
-├── game.exe
-└── README.md
+├── README.md
+└── ...
 ```
 
-Do **not**:
+Do **NOT**:
 
-* Move it into another folder.
-* Rename it.
-* Hide it somewhere else in the project.
-* Delete it.
+- Move the DLL into another folder
+- Rename it
+- Delete it
+- Hide it elsewhere in the project
 
-The game uses `LogitechLedEnginesWrapper.dll` to communicate with your Logitech keyboard through **Logitech G HUB**.
+The game expects:
 
----
-
-## <img src="./assets/logitech-g.svg" width="24" height="24" align="center" alt="Logitech G"> Logitech G HUB Requirement
-
-> [!WARNING]
-> **Logitech G HUB must be installed AND running in the background while playing.**
-
-The game communicates with your keyboard through G HUB in order to:
-
-* Control the keyboard lighting.
-* Map the correct physical keys.
-* Display game states using RGB effects.
-* Display lives.
-* Indicate pause states.
-* React to gameplay events.
-
-If G HUB is closed, the game may be unable to communicate with your keyboard.
+```text
+./LogitechLedEnginesWrapper.dll
+```
 
 ---
 
-## <img src="https://cdn.simpleicons.org/linux/FCC624" width="27" height="27" align="center" alt="Linux"> Linux Support
+## <img src="./assets/OPENRGBLOGO.svg" width="26" height="26" align="center" alt="OpenRGB"> Linux Support
 
-Linux uses **OpenRGB** instead of Logitech G HUB.
+Linux uses **OpenRGB** as the RGB backend instead of Logitech G HUB.
 
-<img src="https://api.iconify.design/lucide:rainbow.svg?color=%23ff4fd8" width="20" height="20" align="center" alt="RGB"> **OpenRGB** provides the RGB backend used by the game on Linux.
+Because of this, Linux users are **not restricted to the Logitech G PRO line**.
 
-This means you are not restricted to the Logitech G PRO keyboard line.
+You can use another RGB keyboard as long as:
 
-As long as your keyboard is properly detected and supported by OpenRGB, it can potentially be used with the game.
+- It is supported by OpenRGB
+- OpenRGB detects it correctly
+- The keyboard exposes the required lighting controls
 
----
-
-# <img src="https://api.iconify.design/lucide:keyboard.svg?color=%238b949e" width="28" height="28" align="center" alt="Keyboard"> Controls
-
-| Key         | Action                                         |
-| ----------- | ---------------------------------------------- |
-| `ENTER`     | Start the game / Retry after winning or losing |
-| `TAB`       | Pause / Resume the game                        |
-| `ESC`       | Exit the game                                  |
-| `F1` – `F5` | Lives indicator                                |
-| `F9`        | Pause combo counter                            |
+> [!NOTE]
+> Keyboard compatibility on Linux depends on **OpenRGB support for your specific device**.
 
 ---
 
-### <img src="https://api.iconify.design/lucide:pause.svg?color=%23ffb020" width="21" height="21" align="center" alt="Pause"> Pause Indicator
+# <img src="https://api.iconify.design/lucide:keyboard.svg?color=%238b949e" width="29" height="29" align="center" alt="Keyboard"> Controls
 
-When the game has been successfully paused using `TAB`:
+| Key | Action |
+|:---:|---|
+| `ENTER` | Start the game |
+| `ENTER` | Retry after winning or losing |
+| `TAB` | Pause / Resume |
+| `ESC` | Exit the game |
+| `F1` - `F5` | Lives indicator |
+| `F9` | Pause combo counter |
+
+---
+
+## <img src="https://api.iconify.design/lucide:pause.svg?color=%23f0a020" width="23" height="23" align="center" alt="Pause"> Pause Indicator
+
+Press:
+
+```text
+TAB
+```
+
+to pause the game.
+
+When the game has been paused successfully:
 
 > **Your entire keyboard will turn AMBER.**
 
-This is the visual confirmation that the game is currently paused.
+This acts as the visual confirmation that the game is currently paused.
+
+Press `TAB` again to resume.
 
 ---
 
-# <img src="https://api.iconify.design/lucide:heart.svg?color=%23ff4b55" width="27" height="27" align="center" alt="Lives"> Lives System
+# <img src="https://api.iconify.design/lucide:heart.svg?color=%23ff4d5a" width="28" height="28" align="center" alt="Lives"> Lives System
 
-The function keys represent your remaining lives:
+Your function keys act as the game's visual life indicator:
 
 ```text
 F1    F2    F3    F4    F5
-LIVE  LIVE  LIVE  LIVE  LIVE
+│     │     │     │     │
+L1    L2    L3    L4    L5
 ```
 
-The lighting on these keys is used by the game to visually communicate your current life count.
+The game uses the lighting of these keys to represent your remaining lives.
+
+As lives are lost, the keyboard will visually reflect the change.
 
 ---
 
-# <img src="https://api.iconify.design/lucide:list-checks.svg?color=%238b949e" width="27" height="27" align="center" alt="Checklist"> Windows Setup Checklist
+# <img src="https://api.iconify.design/lucide:gauge.svg?color=%238b949e" width="28" height="28" align="center" alt="Combo"> Combo Counter
 
-Before launching the game on Windows, make sure:
+The combo system can be paused using:
 
-* [ ] Logitech G HUB is installed.
-* [ ] Logitech G HUB is running.
-* [ ] Your Logitech keyboard is detected by G HUB.
-* [ ] `LogitechLedEnginesWrapper.dll` exists.
-* [ ] The DLL is located in the **root directory of the project**.
-* [ ] The DLL has not been renamed.
-* [ ] The game has permission to access the required files.
+```text
+F9
+```
 
-If all of the above are correct, you're ready to play.
+This pauses the **combo counter** independently from the main game pause control.
+
+The main game itself is paused using:
+
+```text
+TAB
+```
 
 ---
 
-# <img src="https://api.iconify.design/lucide:terminal.svg?color=%238b949e" width="27" height="27" align="center" alt="Terminal"> Quick Start
+# <img src="https://api.iconify.design/lucide:list-checks.svg?color=%238b949e" width="28" height="28" align="center" alt="Checklist"> Windows Setup Checklist
+
+Before launching the game on Windows, verify all of the following:
+
+- [ ] Logitech G HUB is installed
+- [ ] Logitech G HUB is running
+- [ ] Your Logitech keyboard appears inside G HUB
+- [ ] `LogitechLedEnginesWrapper.dll` exists
+- [ ] `LogitechLedEnginesWrapper.dll` is in the project root
+- [ ] The DLL has not been renamed
+- [ ] Your keyboard RGB is working correctly in G HUB
+
+If all checks pass, you're ready to launch the game.
+
+---
+
+# <img src="https://api.iconify.design/lucide:terminal.svg?color=%238b949e" width="28" height="28" align="center" alt="Terminal"> Quick Start
 
 ## <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg" width="22" height="22" align="center" alt="Windows"> Windows
 
+### 1. Install Logitech G HUB
+
+Install and configure Logitech G HUB.
+
+### 2. Connect your keyboard
+
+Make sure your Logitech keyboard appears correctly inside G HUB.
+
+### 3. Keep G HUB running
+
+Do not close it while playing.
+
+### 4. Check the DLL
+
+Make sure this exists in the root of the project:
+
 ```text
-1. Install Logitech G HUB
-2. Connect your Logitech keyboard
-3. Open Logitech G HUB
-4. Make sure LogitechLedEnginesWrapper.dll is in the project root
-5. Launch the game
-6. Press ENTER
+LogitechLedEnginesWrapper.dll
 ```
 
-## <img src="https://cdn.simpleicons.org/linux/FCC624" width="22" height="22" align="center" alt="Linux"> Linux
+### 5. Launch the game
+
+Start the game normally.
+
+### 6. Press ENTER
 
 ```text
-1. Install and configure OpenRGB
-2. Make sure your keyboard is detected
-3. Launch the game
-4. Press ENTER
+ENTER
+```
+
+starts the game.
+
+---
+
+## <img src="./assets/OPENRGBLOGO.svg" width="23" height="23" align="center" alt="OpenRGB"> Linux / OpenRGB
+
+### 1. Install OpenRGB
+
+Install OpenRGB for your Linux distribution.
+
+### 2. Check keyboard detection
+
+Make sure your keyboard appears correctly inside OpenRGB.
+
+### 3. Start OpenRGB
+
+Ensure the RGB backend is available before launching the game.
+
+### 4. Launch the game
+
+Start the game normally.
+
+### 5. Press ENTER
+
+```text
+ENTER
+```
+
+starts the game.
+
+---
+
+# <img src="https://api.iconify.design/lucide:lightbulb.svg?color=%23f0c040" width="28" height="28" align="center" alt="Lighting"> The Keyboard IS the Interface
+
+The RGB effects are **not just decoration**.
+
+Your keyboard is used by the game to communicate gameplay information directly to you.
+
+This includes:
+
+- Remaining lives
+- Pause state
+- Game state
+- Key mapping
+- Combo state
+- Gameplay feedback
+- Visual events
+
+The intended experience therefore requires an RGB keyboard with working software support.
+
+---
+
+## <img src="./assets/LOGITECHGHUBLOGO.svg" width="24" height="24" align="center" alt="Logitech G HUB"> Windows Backend
+
+```text
+GAME
+  │
+  ▼
+LogitechLedEnginesWrapper.dll
+  │
+  ▼
+Logitech G HUB
+  │
+  ▼
+Logitech RGB Keyboard
 ```
 
 ---
 
-# <img src="https://api.iconify.design/lucide:triangle-alert.svg?color=%23ffb020" width="27" height="27" align="center" alt="Important"> Important
+## <img src="./assets/OPENRGBLOGO.svg" width="24" height="24" align="center" alt="OpenRGB"> Linux Backend
 
-The RGB keyboard isn't just decoration.
+```text
+GAME
+  │
+  ▼
+OpenRGB
+  │
+  ▼
+Compatible RGB Keyboard
+```
 
-**It is part of the game's interface.**
+---
 
-Your keyboard is used to communicate gameplay information such as:
+# <img src="https://api.iconify.design/lucide:triangle-alert.svg?color=%23f0a020" width="28" height="28" align="center" alt="Important"> Important
 
-* Lives
-* Pause state
-* Game events
-* Key mapping
-* Combo state
-* Other visual feedback
+### Windows
 
-So for the intended experience:
+Keep:
 
-> **Keep your RGB software running and your keyboard connected.**
+<img src="./assets/LOGITECHGHUBLOGO.svg" width="20" height="20" align="center" alt="Logitech G HUB"> **Logitech G HUB**
+
+running while playing.
+
+### Linux
+
+Make sure:
+
+<img src="./assets/OPENRGBLOGO.svg" width="20" height="20" align="center" alt="OpenRGB"> **OpenRGB**
+
+can detect and communicate with your keyboard.
 
 ---
 
 <p align="center">
-  <img src="https://api.iconify.design/lucide:keyboard.svg?color=%238b949e" width="34" height="34" alt="Keyboard">
+  <img src="https://api.iconify.design/lucide:keyboard.svg?color=%238b949e" width="44" height="44" alt="Keyboard">
 </p>
 
+<h3 align="center">
+  Your keyboard is the game interface.
+</h3>
+
 <p align="center">
-  <strong>Your keyboard is the game interface.</strong>
+  Press <code>ENTER</code> and start playing.
 </p>
