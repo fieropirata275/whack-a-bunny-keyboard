@@ -31,6 +31,8 @@ YourGame/
 ├── LogitechLedEnginesWrapper.dll
 ├── game.exe
 ├── README.md
+├── assets/
+│   └── logitech-g.svg
 └── ...
 ```
 
@@ -55,7 +57,7 @@ The game uses `LogitechLedEnginesWrapper.dll` to communicate with your Logitech 
 
 ---
 
-## <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Logitech_G_logo_horiz_blue.svg" width="70" height="22" align="center" alt="Logitech G"> G HUB Requirement
+## <img src="./assets/logitech-g.svg" width="24" height="24" align="center" alt="Logitech G"> Logitech G HUB Requirement
 
 > [!WARNING]
 > **Logitech G HUB must be installed AND running in the background while playing.**
@@ -73,7 +75,7 @@ If G HUB is closed, the game may be unable to communicate with your keyboard.
 
 ---
 
-## <img src="https://cdn.simpleicons.org/linux/FCC624/FCC624" width="27" height="27" align="center" alt="Linux"> Linux Support
+## <img src="https://cdn.simpleicons.org/linux/FCC624" width="27" height="27" align="center" alt="Linux"> Linux Support
 
 Linux uses **OpenRGB** instead of Logitech G HUB.
 
@@ -149,7 +151,7 @@ If all of the above are correct, you're ready to play.
 6. Press ENTER
 ```
 
-## <img src="https://cdn.simpleicons.org/linux/FCC624/FCC624" width="22" height="22" align="center" alt="Linux"> Linux
+## <img src="https://cdn.simpleicons.org/linux/FCC624" width="22" height="22" align="center" alt="Linux"> Linux
 
 ```text
 1. Install and configure OpenRGB
